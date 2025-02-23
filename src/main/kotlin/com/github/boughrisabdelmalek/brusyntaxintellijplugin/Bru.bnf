@@ -1,0 +1,20 @@
+{
+  parserClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.parser.BruParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Bru"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.boughrisabdelmalek.brusyntaxintellijplugin.psi"
+  psiImplPackage="com.github.boughrisabdelmalek.brusyntaxintellijplugin.psi.impl"
+
+  elementTypeHolderClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.psi.BruTypes"
+  elementTypeClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.psi.BruElementType"
+  tokenTypeClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.psi.BruTokenType"
+}
+
+bruFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY | DIGIT | BLOCK

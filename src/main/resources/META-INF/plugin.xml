@@ -1,4 +1,3 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.boughrisabdelmalek.brusyntaxintellijplugin</id>
     <name>bru-syntax-intellij-plugin</name>
@@ -9,10 +8,49 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.toolWindow.MyToolWindowFactory"
+                    id="MyToolWindow"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+                name="Bru File"
+                implementationClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruFileType"
+                fieldName="INSTANCE"
+                language="Bru"
+                extensions="bru"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <codeStyleSettingsProvider
+                implementation="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruCodeStyleSettingsProvider"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <langCodeStyleSettingsProvider
+                implementation="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruLanguageCodeStyleSettingsProvider"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <lang.parserDefinition
+                language="Bru"
+                implementationClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruParserDefinition"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <lang.syntaxHighlighterFactory
+                language="Bru"
+                implementationClass="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruSyntaxHighlighterFactory"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <colorSettingsPage
+                implementation="com.github.boughrisabdelmalek.brusyntaxintellijplugin.BruColorSettingsPage"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.boughrisabdelmalek.brusyntaxintellijplugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener
+                class="com.github.boughrisabdelmalek.brusyntaxintellijplugin.listeners.MyApplicationActivationListener"
+                topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>
